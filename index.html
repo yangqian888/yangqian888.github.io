@@ -1,124 +1,349 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>商洛村医网</title>
-<style type="text/css">
-<!--
-body {
-	background-color: #83c683;
-	margin-top: 0px;
-}
-#Layer1 {
-	position:absolute;
-	width:91px;
-	height:87px;
-	z-index:1;
-	left: 242px;
-	top: 15px;
-	overflow: auto;
-}
-a:link {
-	color: #FFFFFF;
-	text-decoration: none;
-}
-a:visited {
-	color: #FFFFFF;
-	text-decoration: none;
-}
-.STYLE28 {color: #FFFF00}
-a:hover {
-	text-decoration: none;
-	color: #FFFF00;
-}
-a:active {
-	text-decoration: none;
-}
-.STYLE49 {font-size: 20px; color: #33FFFF;}
-.STYLE54 {color: #FFFFFF; font-size: large; font-family: "宋体";}
-.STYLE60 {font-family: "宋体"; font-size: x-large;}
-.STYLE67 {color: #FF0000}
-.STYLE68 {font-size: 20px}
-.dropdown {            position: relative;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商洛村医网 - 公益服务平台</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "宋体", sans-serif;
+        }
+
+        body {
+            background-color: #83c683;
+            padding: 20px 0;
+            line-height: 1.6;
+        }
+
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #05a045;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 头部样式 */
+        .header {
+            padding: 20px 30px;
+            border-bottom: 2px solid #33FFFF;
+        }
+
+        .header-title {
+            color: #33FFFF;
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* 主内容区样式 */
+        .main-content {
+            padding: 30px;
+            color: #fff;
+        }
+
+        /* 板块通用样式 */
+        .resource-section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            color: #FFFF00;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #FFFF00;
+        }
+
+        /* 链接列表样式 */
+        .link-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 25px;
+        }
+
+        .link-item {
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: 250px;
+        }
+
+        .link-item a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
             display: inline-block;
-}
-.dropdown-content {            display: none;
+        }
+
+        .link-item a:hover {
+            color: #FFFF00;
+            transform: translateX(3px);
+        }
+
+        /* 下拉菜单样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .dropdown-btn {
+            background-color: #048c3c;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #037a32;
+        }
+
+        .dropdown-content {
+            display: none;
             position: absolute;
-            background: #f9f9f9;
-            min-width: 60px;
+            top: 100%;
+            left: 0;
+            background-color: #f9f9f9;
+            min-width: 150px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
--->
-</style>
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* 特殊提示样式 */
+        .special-tips {
+            background-color: rgba(255,255,0,0.1);
+            padding: 12px 15px;
+            border-left: 4px solid #FFFF00;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        /* 共享文件区域 */
+        .share-file {
+            background-color: rgba(51,255,255,0.1);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .share-file a {
+            color: #33FFFF;
+            font-weight: bold;
+        }
+
+        /* 服务支持样式 */
+        .service-support {
+            color: #33FFFF;
+            font-size: 18px;
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background-color: #000;
+            color: #33FFFF;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .site-runtime {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            .link-item {
+                flex: 0 0 calc(50% - 20px);
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .link-item {
+                flex: 0 0 100%;
+            }
+            
+            .header-title {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .service-support {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<table width="1220" height="617" border="0" align="center">
- 
+    <div class="container">
+        <!-- 页面头部 -->
+        <header class="header">
+            <h1 class="header-title">商洛村医网</h1>
+        </header>
 
-  <tr>
-    <td width="1209" height="571" bordercolor="#F0F0F0" bgcolor="05a045"><table width="1201" height="566" border="0">
-      <tr>
-        <td width="210" height="562">&nbsp;</td>
-        <td width="981"><h2 class="STYLE28">注意：以下部分链接需要先连SV独立客户端</h2>
-        <p class="STYLE60"><a href="SVClientSetup.exe" target="_blank">1.sv客户端 &nbsp;</a><a href="https://www.xinyixy.com/college/90" target="_blank">2.心医学院 &nbsp;</a><a href="http://219.145.245.218:8077/ehrPortal/sdc/jsp/login/login_sx.jsp" target="_blank">3.健康档案查询系统 </a><a href="https://www.jkfpsj.cn/operation/login.jsp" target="_blank">&nbsp;4.健康扶贫</a> </p>
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 重要提示 -->
+            <div class="special-tips">
+                注意：以下部分链接需要先连接SV独立客户端才能访问
+            </div>
 
-        <div class="dropdown">
-          <button>5.村医公卫网</button>
-          <div class="dropdown-content"> 
-		  <a href="http://172.16.20.30:8077/ehr/sdc/jsp/login/login_sx.jsp">公卫30版</a> 
-		  <a href="http://172.16.20.40:8077/ehr/sdc/jsp/login/login_sx.jsp">公卫40版</a> 
-		  <a href="http://172.16.20.45:8077/ehr/sdc/jsp/login/login_sx.jsp">公卫45版</a> </div>
-        </div>
-        <p class="STYLE60"> ??<a href="http://cdn2.ime.sogou.com/dl/index/1537348926/sogou_yisheng_11a.exe?st=bCqm-EohhyPniZkGeI-kHA&amp;e=1621499194&amp;fn=sogou_yisheng_11a.exe">6.搜狗输入法医生版</a><a href="https://admin.online.360.cn/dist/static/download/index.html?token=G9Q03ZiPpb8utNZ2e5CDQw%3D%3D" target="_blank"> &nbsp;&nbsp;&nbsp;7.360卫士团队版 </a></p>
-          <p class="STYLE60"><a href="http://hisips.shx.hsip.gov.cn" target="_blank">8.两定机构医疗保障信息平台&nbsp;&nbsp;&nbsp;</a><a href="http://47.101.217.208/#/" target="_blank">9.乐康体检智能管理后台</a></p>
-          <p class="STYLE60"><a href="_notes/ldcx.rar" download="_notes/ldcx.rar" target="_blank">10.两定平台打不开的请下载此文件运行</a><a href="http://slhs.ehunyu.com:8084/MassesMobile/OtherShowResult/Index" target="_blank">&nbsp;<a href="http://slhs.ehunyu.com:8084/MassesMobile/OtherShowResult/Index">11.商洛核酸结果查询</a> &nbsp;</p>
-          <p class="STYLE60"><a href="https://www.bmicha.com/" target="_blank">12.体脂计算器</a> &nbsp;&nbsp;&nbsp;<a href="http://10.5.98.10:18080/index.html" target="_blank">13.陕西省妇幼健康信息系统 </a></p>
-          <h2 class="STYLE28">陕西省高中高考服务平台</h2>
-          <p class="STYLE60"><a href="https://www.sneac.edu.cn/xuekao/gzxyks_student_ui/#/login">高考准考证打印</a> &nbsp;&nbsp;<a href="https://www.sneac.edu.cn/XYKS/stu/stu_main.jsp">高考成绩查询 </a>&nbsp;&nbsp;<a href="http://www.sneac.com/ksfw/lqcx.htm">录取查询</a> &nbsp;&nbsp;<a href="http://www.sneac.com/ksfw/zytb.htm">志愿填报</a></p>
-          <p class="STYLE60"><a href="https://gaokao.chsi.com.cn/zyk/pub/myd/schAppraisalTop.action" target="_blank">院校满意度</a>　<a href="http://www.sxrsks.cn/website/index.aspx" target="_blank">陕西人事考试网</a>　<a href="http://rsj.shangluo.gov.cn/" target="_blank">商洛人社局</a>　<a href="http://www.shaanxi.gov.cn/xw/ztzl/zxzt/zkzl/" target="_blank">陕西招考招录公示</a></p>
-          <h2 class="STYLE28">以下是中医《医学知识》</h2>
-          <p class="STYLE60"><a href="https://www.xjlz365.com/fangji/" target="_blank">14.中医方剂大全 </a><a href="https://www.xjlz365.com/tizhi/" target="_blank">&nbsp;15.九种体制&nbsp;</a> <a href="https://www.xjlz365.com/anmo/" target="_blank">16.理疗按摩 </a>&nbsp;<a href="https://www.xjlz365.com/aijiu/" target="_blank">17.艾灸</a></p>
-          <p class="STYLE60"><a href="https://www.xjlz365.com/pianfang/" target="_blank">18.民间偏方</a>&nbsp;&nbsp;<a href="https://www.xjlz365.com/jingluo/" target="_blank">19.人体经络</a>&nbsp;&nbsp;<a href="https://www.xjlz365.com/organ/" target="_blank">20.五脏</a> &nbsp;&nbsp;&nbsp;<a href="https://www.xjlz365.com/baguan/" target="_blank">21.拔罐&nbsp;</a></p>
-          <p class="STYLE60"><a href="https://www.xjlz365.com/guasha/" target="_blank">22.刮痧</a> &nbsp;&nbsp;<a href="https://www.hantang.com/chinese/ch_Articles/Ch_index.html" target="_blank" class="STYLE60">&nbsp;23.***《倪海厦中医大全》　</a></p>
-          <h2 class="STYLE28"><span class="STYLE60"> <a href="https://wwk.lanzoub.com/b027yu7bc" target="_blank"><img src="639.png" width="26" height="28" />共享文件（密码：如有需要请联系杨千）</a></span></h2>
-          <p class="STYLE49">如需购买合疗电脑或有偿解决医保及网络问题请致电：13209149360</p></td>
-      </tr>
-    </table>    </td>
-  </tr>
-  <tr bgcolor="#000000">
-    <td height="40" align="center" bordercolor="#F0F0F0"><blockquote>
-      <blockquote>
-        <p class="STYLE49"> 本站为非营利公益机构  &nbsp;&nbsp;由（杨千）创建于2018年9月,&nbsp;&nbsp;已经稳定运行： <span id="sitetime"  ></span>      </blockquote>
-    </blockquote></td>
-  </tr>
-</table>
-<script language=javascript>
-    function siteTime(){
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth()+1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        var t1 = Date.UTC(2018,9,1,00,00,00); 
-        var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
-        var diff = t2-t1;
-        var diffYears = Math.floor(diff/years);
-        var diffDays = Math.floor((diff/days)-diffYears*365);
-        var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-        var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-        var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-        document.getElementById("sitetime").innerHTML=+diffYears+"年"+diffDays+"天"+diffHours+"时"+diffMinutes+"分钟"+diffSeconds+"秒";
-    }
-    siteTime();
-</script>
+            <!-- 基础工具与客户端板块 -->
+            <section class="resource-section">
+                <h2 class="section-title">一、基础工具与客户端</h2>
+                <div class="link-list">
+                    <div class="link-item">1. <a href="SVClientSetup.exe" target="_blank">SV客户端</a></div>
+                    <div class="link-item">2. <a href="https://www.xinyixy.com/college/90" target="_blank">心医学院</a></div>
+                    <div class="link-item">3. <a href="http://cdn2.ime.sogou.com/dl/index/1537348926/sogou_yisheng_11a.exe?st=bCqm-EohhyPniZkGeI-kHA&amp;e=1621499194&amp;fn=sogou_yisheng_11a.exe" target="_blank">搜狗输入法医生版</a></div>
+                    <div class="link-item">4. <a href="https://admin.online.360.cn/dist/static/download/index.html?token=G9Q03ZiPpb8utNZ2e5CDQw%3D%3D" target="_blank">360卫士团队版</a></div>
+                    <div class="link-item">5. <a href="_notes/ldcx.rar" download="ldcx.rar" target="_blank">两定平台修复文件（打不开时运行）</a></div>
+                </div>
+            </section>
+
+            <!-- 医疗核心系统板块 -->
+            <section class="resource-section">
+                <h2 class="section-title">二、医疗工作核心系统</h2>
+                <!-- 村医公卫网下拉菜单 -->
+                <div class="dropdown">
+                    <button class="dropdown-btn">1. 村医公卫网（多版本）</button>
+                    <div class="dropdown-content">
+                        <a href="http://172.16.20.30:8077/ehr/sdc/jsp/login/login_sx.jsp" target="_blank">公卫30版</a>
+                        <a href="http://172.16.20.40:8077/ehr/sdc/jsp/login/login_sx.jsp" target="_blank">公卫40版</a>
+                        <a href="http://172.16.20.45:8077/ehr/sdc/jsp/login/login_sx.jsp" target="_blank">公卫45版</a>
+                    </div>
+                </div>
+                <div class="link-list">
+                    <div class="link-item">2. <a href="http://219.145.245.218:8077/ehrPortal/sdc/jsp/login/login_sx.jsp" target="_blank">健康档案查询系统</a></div>
+                    <div class="link-item">3. <a href="https://www.jkfpsj.cn/operation/login.jsp" target="_blank">健康扶贫系统</a></div>
+                    <div class="link-item">4. <a href="http://hisips.shx.hsip.gov.cn" target="_blank">两定机构医疗保障信息平台</a></div>
+                    <div class="link-item">5. <a href="http://47.101.217.208/#/" target="_blank">乐康体检智能管理后台</a></div>
+                    <div class="link-item">6. <a href="http://slhs.ehunyu.com:8084/MassesMobile/OtherShowResult/Index" target="_blank">商洛核酸结果查询</a></div>
+                    <div class="link-item">7. <a href="http://10.5.98.10:18080/index.html" target="_blank">陕西省妇幼健康信息系统</a></div>
+                </div>
+            </section>
+
+            <!-- 高考服务板块 -->
+            <section class="resource-section">
+                <h2 class="section-title">三、高考服务平台</h2>
+                <div class="link-list">
+                    <div class="link-item">1. <a href="https://www.sneac.edu.cn/xuekao/gzxyks_student_ui/#/login" target="_blank">高考准考证打印</a></div>
+                    <div class="link-item">2. <a href="https://www.sneac.edu.cn/XYKS/stu/stu_main.jsp" target="_blank">高考成绩查询</a></div>
+                    <div class="link-item">3. <a href="http://www.sneac.com/ksfw/lqcx.htm" target="_blank">录取查询</a></div>
+                    <div class="link-item">4. <a href="http://www.sneac.com/ksfw/zytb.htm" target="_blank">志愿填报</a></div>
+                    <div class="link-item">5. <a href="https://gaokao.chsi.com.cn/zyk/pub/myd/schAppraisalTop.action" target="_blank">院校满意度查询</a></div>
+                </div>
+            </section>
+
+            <!-- 政务与医学知识板块 -->
+            <section class="resource-section">
+                <h2 class="section-title">四、政务与医学知识</h2>
+                <div class="link-list">
+                    <div class="link-item">1. <a href="http://www.sxrsks.cn/website/index.aspx" target="_blank">陕西人事考试网</a></div>
+                    <div class="link-item">2. <a href="http://rsj.shangluo.gov.cn/" target="_blank">商洛人社局</a></div>
+                    <div class="link-item">3. <a href="http://www.shaanxi.gov.cn/xw/ztzl/zxzt/zkzl/" target="_blank">陕西招考招录公示</a></div>
+                    <div class="link-item">4. <a href="https://www.xjlz365.com/fangji/" target="_blank">中医方剂大全</a></div>
+                    <div class="link-item">5. <a href="https://www.xjlz365.com/tizhi/" target="_blank">九种体质相关知识</a></div>
+                    <div class="link-item">6. <a href="https://www.xjlz365.com/anmo/" target="_blank">理疗按摩参考</a></div>
+                    <div class="link-item">7. <a href="https://www.xjlz365.com/aijiu/" target="_blank">艾灸知识</a></div>
+                    <div class="link-item">8. <a href="https://www.xjlz365.com/pianfang/" target="_blank">民间偏方参考</a></div>
+                    <div class="link-item">9. <a href="https://www.hantang.com/chinese/ch_Articles/Ch_index.html" target="_blank">倪海厦中医大全</a></div>
+                </div>
+            </section>
+
+            <!-- 共享文件区域 -->
+            <div class="share-file">
+                <h3 class="section-title" style="margin-bottom: 10px; font-size: 18px;">共享文件</h3>
+                <a href="https://wwk.lanzoub.com/b027yu7bc" target="_blank">
+                     共享文件下载（密码：如有需要请联系杨千）
+                </a>
+            </div>
+
+            <!-- 服务支持 -->
+            <div class="service-support">
+                如需购买合疗电脑或有偿解决医保及网络问题请致电：13209149360
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>本站为非营利公益机构 | 由杨千创建于2018年9月 | 已稳定运行：<span id="sitetime" class="site-runtime"></span></p>
+        </footer>
+    </div>
+
+    <!-- 网站运行时间计算脚本 -->
+    <script>
+        // 优化时间计算逻辑，减少性能消耗
+        function calculateSiteRuntime() {
+            const createTime = new Date(2018, 8, 1, 0, 0, 0).getTime(); // 2018年9月1日（月份从0开始）
+            const now = new Date().getTime();
+            const diff = now - createTime;
+
+            // 时间单位换算
+            const seconds = 1000;
+            const minutes = seconds * 60;
+            const hours = minutes * 60;
+            const days = hours * 24;
+            const years = days * 365;
+
+            // 计算各单位时间
+            const diffYears = Math.floor(diff / years);
+            const remainingAfterYears = diff % years;
+            const diffDays = Math.floor(remainingAfterYears / days);
+            const remainingAfterDays = remainingAfterYears % days;
+            const diffHours = Math.floor(remainingAfterDays / hours);
+            const remainingAfterHours = remainingAfterDays % hours;
+            const diffMinutes = Math.floor(remainingAfterHours / minutes);
+            const diffSeconds = Math.floor((remainingAfterHours % minutes) / seconds);
+
+            // 更新页面显示
+            document.getElementById('sitetime').textContent = 
+                `${diffYears}年${diffDays}天${diffHours}时${diffMinutes}分钟${diffSeconds}秒`;
+        }
+
+        // 初始计算并设置定时器（1秒更新一次）
+        calculateSiteRuntime();
+        setInterval(calculateSiteRuntime, 1000);
+    </script>
 </body>
 </html>
